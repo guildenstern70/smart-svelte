@@ -1,8 +1,8 @@
 <script>
-  import Paragraph from "../../Paragraph.svelte";
-  import { currentPage } from '../../store.ts';
+  import Paragraph from "../../../Paragraph.svelte";
+  import { currentPage } from '../../../store.ts';
 
-  currentPage.update(n => 0);
+  currentPage.update(n => 2);
 </script>
 
 <!--
@@ -14,6 +14,4 @@
   -
   -->
 
-
-<Paragraph title="MORE" />
-
+<Paragraph title="SERVICES" />

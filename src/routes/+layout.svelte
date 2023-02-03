@@ -11,4 +11,6 @@
   import "../main.css";
 </script>
 
-<slot />
+<div class="bg-white py-4 px-4">
+  <slot />
+</div>

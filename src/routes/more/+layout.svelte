@@ -7,66 +7,32 @@
   -
   -->
 
-<script>
+<script lang="ts">
+
   import { currentPage } from '../../stores.ts'
   import { watchResize } from "svelte-watch-resize";
-  import { goto } from '$app/navigation';
+  import { appPages } from "../../pages.ts";
+  import CssItem from "../../components/CssItem.svelte";
+  import HamburgerItem from "../../components/HamburgerItem.svelte";
+
 
   let storedCurrentPage;
-
-  let homeStyle = 'navitem'; let homeHamburgerStyle = 'hamburgerNav';
-  let aboutStyle = 'navitem'; let aboutHamburgerStyle = 'hamburgerNav';
-  let servicesStyle = 'navitem'; let servicesHamburgerStyle = 'hamburgerNav';
-  let pricingStyle = 'navitem'; let pricingHamburgerStyle = 'hamburgerNav';
   let hamburgerStyle = 'hidden';
 
-  currentPage.subscribe(value => {
+  currentPage.subscribe(async value => {
     storedCurrentPage = value;
-    homeStyle = 'navitem'; homeHamburgerStyle = 'hamburgerNav';
-    aboutStyle = 'navitem'; aboutHamburgerStyle = 'hamburgerNav';
-    servicesStyle = 'navitem'; servicesHamburgerStyle = 'hamburgerNav';
-    pricingStyle = 'navitem'; pricingHamburgerStyle = 'hamburgerNav';
-    switch (storedCurrentPage) {
-      case 0: // home
-        homeStyle = 'selectednavitem';
-        homeHamburgerStyle = 'selectedHamburgerNav';
-        break;
-      case 1: // about
-        aboutStyle = 'selectednavitem';
-        aboutHamburgerStyle = 'selectedHamburgerNav';
-        break;
-      case 2: // services
-        servicesStyle = 'selectednavitem';
-        servicesHamburgerStyle = 'selectedHamburgerNav';
-        break;
-      case 3: // pricing
-        pricingStyle = 'selectednavitem';
-        pricingHamburgerStyle = 'selectedHamburgerNav';
-        break;
-    }
-
   });
 
-  function onHamburger() {
-    if (hamburgerStyle === 'hidden')
-      hamburgerStyle = '';
-    else
-      hamburgerStyle = 'hidden';
+  function onHamburger(): void {
+    hamburgerStyle = hamburgerStyle === "hidden" ? "" : "hidden";
   }
 
-  function routeToPage(route) {
-    hamburgerStyle = 'hidden';
-    goto(route);
-  }
-
-  function handleResize() {
+  function handleResize(): void {
     if (hamburgerStyle === '')
       hamburgerStyle = 'hidden';
   }
 
-
 </script>
-
 
 <nav class="bg-gray-100 px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
   <div class="container flex flex-wrap items-center justify-between mx-auto">
@@ -83,34 +49,16 @@
     </div>
     <div class="{hamburgerStyle} w-full" id="navbar-hamburger" use:watchResize={handleResize}>
       <ul class="flex flex-col mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-        <li>
-          <button on:click={() => routeToPage('/more')} class="{homeHamburgerStyle}">Home</button>
-        </li>
-        <li>
-          <button on:click={() => routeToPage('/more/about')} class="{aboutHamburgerStyle}">About</button>
-        </li>
-        <li>
-          <button on:click={() => routeToPage('/more/services')} class="{servicesHamburgerStyle}">Services</button>
-        </li>
-        <li>
-          <button on:click={() => routeToPage('/more/pricing')} class="{pricingHamburgerStyle}">Pricing</button>
-        </li>
+        {#each [...appPages]  as [name, url]}
+          <HamburgerItem url="{url}" name="{name}" onClick="{onHamburger}" />
+        {/each}
       </ul>
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
       <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <li>
-          <a href="/more" class="{homeStyle}" aria-current="page">Home</a>
-        </li>
-        <li>
-          <a href="/more/about" class="{aboutStyle}">About</a>
-        </li>
-        <li>
-          <a href="/more/services" class="{servicesStyle}">Services</a>
-        </li>
-        <li>
-          <a href="/more/pricing" class="{pricingStyle}">Pricing</a>
-        </li>
+        {#each [...appPages]  as [name, url]}
+          <CssItem url="{url}" name="{name}" />
+        {/each}
       </ul>
     </div>
   </div>

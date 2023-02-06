@@ -1,5 +1,14 @@
-<script>
-  export let title;
+<!--
+  -
+  -  SmartSvelte
+  -  A web template project for Svelte
+  -  Copyright (c) 2023 Alessio Saltarin
+  -  MIT License - see LICENSE
+  -
+  -->
+
+<script lang="ts">
+  export let title: string;
 </script>
 
 <div class="sm:mx-18 md:mx-10 lg:mx-20">

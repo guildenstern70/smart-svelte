@@ -1,6 +1,6 @@
 <script>
   import Paragraph from "../../../Paragraph.svelte";
-  import { currentPage } from '../../../store.ts';
+  import { currentPage } from '../../../stores.ts';
 
   currentPage.update(n => 1);
 

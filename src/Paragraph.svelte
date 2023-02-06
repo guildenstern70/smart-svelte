@@ -2,7 +2,7 @@
   export let title;
 </script>
 
-<div class="mx-18">
+<div class="sm:mx-18 md:mx-10 lg:mx-20">
 
   <h2 class="text-indigo-600 font-bold text-xl mb-6">{title}</h2>
 

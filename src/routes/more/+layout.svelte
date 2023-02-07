@@ -9,11 +9,11 @@
 
 <script lang="ts">
 
-  import { currentPage } from '../../stores.ts'
+  import { currentPage } from '../../stores'
   import { watchResize } from "svelte-watch-resize";
-  import { appPages } from "../../pages.ts";
-  import CssItem from "../../components/CssItem.svelte";
-  import HamburgerItem from "../../components/HamburgerItem.svelte";
+  import { appPages } from "../../pages";
+  import CssItem from "../../components/cssitem.svelte";
+  import HamburgerItem from "../../components/hamburgeritem.svelte";
 
 
   let storedCurrentPage;

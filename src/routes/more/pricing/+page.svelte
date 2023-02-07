@@ -8,8 +8,8 @@
   -->
 
 <script>
-  import Paragraph from "../../../components/Paragraph.svelte";
-  import { currentPage } from '../../../stores.ts';
+  import Paragraph from "../../../components/paragraph.svelte";
+  import { currentPage } from '../../../stores';
 
   currentPage.update(n => 3);
 </script>

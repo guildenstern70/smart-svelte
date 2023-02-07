@@ -8,9 +8,10 @@
  */
 
 import { describe, it, expect } from 'vitest';
+import { appPages} from "./pages";
 
-describe('sum test', () => {
-	it('adds 1 + 2 to equal 3', () => {
-		expect(1 + 2).toBe(3);
+describe('pages test', () => {
+	it('router should have 4 pages', () => {
+		expect(appPages.size).toBe(4);
 	});
 });

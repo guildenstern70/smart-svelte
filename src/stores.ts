@@ -7,13 +7,17 @@
  *
  */
 
+import type { Writable } from 'svelte/store';
 import { writable } from 'svelte/store';
 
+export type SmartSession = {
+    loggedUser: string,
+}
 
 // Current page store
-export const currentPage = writable(0);
+export const currentPage: Writable<number> = writable(0);
 
-// // Session storage
-export const session = writable('');
+// Session storage
+export const session: Writable<SmartSession> = writable({ loggedUser: '' } );
 
 

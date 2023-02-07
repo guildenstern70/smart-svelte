@@ -15,8 +15,7 @@
   import CssItem from "../../components/cssitem.svelte";
   import HamburgerItem from "../../components/hamburgeritem.svelte";
 
-
-  let storedCurrentPage;
+  let storedCurrentPage: number;
   let hamburgerStyle = 'hidden';
 
   currentPage.subscribe(async value => {

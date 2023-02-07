@@ -1,10 +1,3 @@
-<script>
-  import Paragraph from "../../components/paragraph.svelte";
-  import { currentPage } from '../../stores';
-
-  currentPage.update(n => 0);
-</script>
-
 <!--
   -
   -  SmartSvelte
@@ -13,6 +6,12 @@
   -  MIT License - see LICENSE
   -
   -->
+
+<script>
+  import Paragraph from "../../components/paragraph.svelte";
+  import { currentPage } from '../../stores';
+  currentPage.update(n => 0);
+</script>
 
 
 <Paragraph title="HOME" />

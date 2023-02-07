@@ -27,4 +27,25 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Unit Tests
+
+To run unit tests:
+
+```bash
+npm run test:unit
+```
+
+## UI Tests
+
+Before running UI rests, install 'playwright' with
+
+```bash
+npx playwright install
+```
+
+then run
+
+```bash
+npm run test
+```
+

@@ -9,12 +9,12 @@
 
 <script lang="ts">
 
-  import { currentPage } from '../stores.ts'
+  import { currentPage } from '../stores'
 
   export let url: string;
   export let name = 'Home';
 
-  let storedCurrentPage;
+  let storedCurrentPage: number;
   let isSelected = false;
 
   currentPage.subscribe(async value => {

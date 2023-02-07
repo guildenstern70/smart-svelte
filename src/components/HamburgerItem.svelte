@@ -9,14 +9,16 @@
 
 <script lang="ts">
 
-  import { currentPage } from '../stores.ts'
+  import { currentPage } from '../stores'
   import { goto } from "$app/navigation";
+
+  type OnClickFunction = () => void;
 
   export let url: string;
   export let name = 'Home';
-  export let onClick
+  export let onClick: OnClickFunction;
 
-  let storedCurrentPage;
+  let storedCurrentPage: number;
   let isSelected = false;
 
   currentPage.subscribe(async value => {
@@ -27,7 +29,7 @@
 
   $: className = isSelected ? 'selectedHamburgerNav' : 'hamburgerNav';
 
-  function routeToPage(route): void {
+  function routeToPage(route: string): void {
     goto(route);
     onClick();
   }

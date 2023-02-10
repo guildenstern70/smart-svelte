@@ -15,7 +15,6 @@
   export let data: LayoutData;
 
   import { currentPage } from '../../stores'
-  import { watchResize } from "svelte-watch-resize";
   import { appPages } from "../../pages";
   import CssItem from "../../components/cssitem.svelte";
   import HamburgerItem from "../../components/hamburgeritem.svelte";
@@ -60,7 +59,7 @@
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
       </button>
     </div>
-    <div class="{hamburgerStyle} w-full" id="navbar-hamburger" use:watchResize={handleResize}>
+    <div class="{hamburgerStyle} w-full" id="navbar-hamburger">
       <ul class="flex flex-col mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
         {#each [...appPages]  as [name, url]}
           <HamburgerItem url="{url}" name="{name}" onClick="{onHamburger}" />

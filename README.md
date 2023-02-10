@@ -51,3 +51,10 @@ then run
 npm run test
 ```
 
+## Docker Image
+
+We are using 'Node.js Adapter' to deploy SmartSvelte app as a Node.js application.
+
+    docker build -t smartsvelte-docker .
+    docker run --publish 8080:3000 smartsvelte-docker
+

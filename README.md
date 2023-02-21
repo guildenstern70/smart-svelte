@@ -3,8 +3,10 @@
 SmartSvelte is a web template app build upon:
 
 * [Svelte](https://svelte.dev/) web framework 
+* [SvelteKit](https://kit.svelte.dev/) Svelte with superpowers
 * [Vite](https://vitejs.dev/) generator
 * [Tailwind CSS](https://tailwindcss.com/) responsive library
+* [Svelte Tailwind](https://flowbite-svelte.com/) Svelte-ready components for Tailwind
 
 ## Setup
 
@@ -48,4 +50,11 @@ then run
 ```bash
 npm run test
 ```
+
+## Docker Image
+
+We are using 'Node.js Adapter' to deploy SmartSvelte app as a Node.js application.
+
+    docker build -t smartsvelte-docker .
+    docker run --publish 8080:3000 smartsvelte-docker
 

@@ -9,11 +9,19 @@
 
 <script lang="ts">
 
+  import type { LayoutData } from './$types';
+  import UserAvatar from "../../components/useravatar.svelte";
+
+  export let data: LayoutData;
+
   import { currentPage } from '../../stores'
-  import { watchResize } from "svelte-watch-resize";
   import { appPages } from "../../pages";
   import CssItem from "../../components/cssitem.svelte";
   import HamburgerItem from "../../components/hamburgeritem.svelte";
+
+  if (data) {
+    console.log('Layout data ' + JSON.stringify(data));
+  }
 
   let storedCurrentPage: number;
   let hamburgerStyle = 'hidden';
@@ -40,13 +48,18 @@
       <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">SmartSvelte</span>
     </a>
     <div class="flex md:order-2">
-      <a href="/login" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</a>
+      {#if data.loggedUser }
+      	<UserAvatar username="{data.loggedUser}" />
+      {:else}
+        <!-- Login Button -->
+        <a href="/login" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</a>
+      {/if}
       <button on:click={onHamburger} data-collapse-toggle="navbar-hamburger" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
       </button>
     </div>
-    <div class="{hamburgerStyle} w-full" id="navbar-hamburger" use:watchResize={handleResize}>
+    <div class="{hamburgerStyle} w-full" id="navbar-hamburger">
       <ul class="flex flex-col mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
         {#each [...appPages]  as [name, url]}
           <HamburgerItem url="{url}" name="{name}" onClick="{onHamburger}" />

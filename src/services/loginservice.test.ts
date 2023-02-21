@@ -13,7 +13,7 @@ import { describe, it, expect } from 'vitest';
 import { LoginService } from './loginservice';
 import { session } from "../stores";
 
-describe('login services', () => {
+describe('login colors', () => {
 
     const loginService = new LoginService();
     let currentSession: SmartSession;

@@ -37,8 +37,8 @@
           return true;
         }
         break;
-      case 2: // services
-        if (menuName === 'Services') {
+      case 2: // colors
+        if (menuName === 'Colors') {
           return true;
         }
         break;

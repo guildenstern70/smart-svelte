@@ -12,7 +12,7 @@ export const appPages = new Map<string, string>();
 
 appPages.set("Home", "/more");
 appPages.set("About", "/more/about");
-appPages.set("Services", "/more/services");
+appPages.set("Colors", "/more/colors");
 appPages.set("Pricing", "/more/pricing");
 
 

@@ -46,7 +46,7 @@
           return true;
         }
         break;
-      case 2: // services
+      case 2: // colors
         if (menuName === 'Services') {
           return true;
         }

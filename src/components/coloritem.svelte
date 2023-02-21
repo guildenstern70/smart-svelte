@@ -10,7 +10,7 @@
 	export let color: string;
 </script>
 
-<div class="coloritem" style="--x-color: {color}">
+<div class="coloritem" style="--x-color: {color}" />
 
 <style>
 	.coloritem {

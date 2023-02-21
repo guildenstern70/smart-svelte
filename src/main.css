@@ -13,9 +13,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.svelte-orange {
+    color: #ff3e00;
+}
+
 @layer base {
     html {
         font-family: 'Ubuntu', system-ui, sans-serif;
+    }
+
+    a {
+        @apply text-indigo-600 no-underline
     }
 }
 
@@ -34,7 +42,6 @@
 
     .selectedHamburgerNav {
         @apply block py-2 pl-3 pr-4 text-white bg-blue-700 rounded dark:bg-blue-600;
-
     }
 }
 

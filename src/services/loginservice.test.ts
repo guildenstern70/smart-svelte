@@ -7,27 +7,26 @@
  *
  */
 
-import type { SmartSession } from "../stores";
+import type { SmartSession } from '../stores';
 
 import { describe, it, expect } from 'vitest';
 import { LoginService } from './loginservice';
-import { session } from "../stores";
+import { session } from '../stores';
 
 describe('login colors', () => {
+	const loginService = new LoginService();
+	let currentSession: SmartSession;
+	const _ = session.subscribe((currSession) => (currentSession = currSession));
 
-    const loginService = new LoginService();
-    let currentSession: SmartSession;
-    const updatedSession = session.subscribe( (currSession) => currentSession = currSession);
+	it('existing user should be able to log in', () => {
+		const isLoggedIn = loginService.performLogin('alessio', 'doctor');
+		expect(isLoggedIn).toBe(true);
+		expect(currentSession.loggedUser).toBe('alessio');
+	});
 
-    it('existing user should be able to log in', () => {
-        const isLoggedIn = loginService.performLogin('alessio', 'doctor');
-        expect(isLoggedIn).toBe(true);
-        expect(currentSession.loggedUser).toBe('alessio');
-    });
-
-    it('non existing user should NOT be able to log in', () => {
-        const isLoggedIn = loginService.performLogin('carl', 'romano');
-        expect(isLoggedIn).toBe(false);
-        expect(currentSession.loggedUser).toBe('');
-    });
+	it('non existing user should NOT be able to log in', () => {
+		const isLoggedIn = loginService.performLogin('carl', 'romano');
+		expect(isLoggedIn).toBe(false);
+		expect(currentSession.loggedUser).toBe('');
+	});
 });

@@ -8,13 +8,13 @@
  */
 
 export interface Color {
-  id: number;
-  name: string;
-  year: number;
-  color: string;
-  pantone_value: string;
+	id: number;
+	name: string;
+	year: number;
+	color: string;
+	pantone_value: string;
 }
 
 export interface Colors {
-  colors: Array<Color>;
+	colors: Array<Color>;
 }

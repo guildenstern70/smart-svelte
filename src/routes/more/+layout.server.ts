@@ -8,17 +8,14 @@
  */
 
 import type { LayoutServerLoad } from './$types';
-import type { Cookies, RequestEvent } from "@sveltejs/kit";
+import type { RequestEvent } from '@sveltejs/kit';
 
-export const load: LayoutServerLoad = (async (event: RequestEvent) => {
-
-    const cookies = event.cookies;
-    const loggedUser: string | undefined = cookies.get('username');
-    if (loggedUser) {
-        console.log('Found username in cookies = ' + loggedUser);
-        return { loggedUser };
-    }
-    return {};
-
-});
-
+export const load: LayoutServerLoad = async (event: RequestEvent) => {
+	const cookies = event.cookies;
+	const loggedUser: string | undefined = cookies.get('username');
+	if (loggedUser) {
+		console.log('Found username in cookies = ' + loggedUser);
+		return { loggedUser };
+	}
+	return {};
+};

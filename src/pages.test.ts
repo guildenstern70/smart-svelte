@@ -8,7 +8,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { appPages} from "./pages";
+import { appPages } from './pages';
 
 describe('pages test', () => {
 	it('router should have 4 pages', () => {

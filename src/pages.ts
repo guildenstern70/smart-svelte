@@ -7,13 +7,9 @@
  *
  */
 
-
 export const appPages = new Map<string, string>();
 
-appPages.set("Home", "/more");
-appPages.set("About", "/more/about");
-appPages.set("Colors", "/more/colors");
-appPages.set("Pricing", "/more/pricing");
-
-
-
+appPages.set('Home', '/more');
+appPages.set('About', '/more/about');
+appPages.set('Colors', '/more/colors');
+appPages.set('Pricing', '/more/pricing');

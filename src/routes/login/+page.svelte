@@ -6,11 +6,8 @@
   -  MIT License - see LICENSE
   -
   -->
-
 <script>
-  import LoginForm from "../../components/loginform.svelte";
+	import LoginForm from '../../components/loginform.svelte';
 </script>
 
 <LoginForm />
-
-

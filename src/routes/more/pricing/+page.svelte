@@ -6,12 +6,11 @@
   -  MIT License - see LICENSE
   -
   -->
-
 <script>
-  import Paragraph from "../../../components/paragraph.svelte";
-  import { currentPage } from '../../../stores';
+	import Paragraph from '../../../components/paragraph.svelte';
+	import { currentPage } from '../../../stores';
 
-  currentPage.update(n => 3);
+	currentPage.update(() => 3);
 </script>
 
 <Paragraph title="PRICING" />

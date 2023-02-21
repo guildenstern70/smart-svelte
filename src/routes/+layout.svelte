@@ -6,11 +6,10 @@
   -  MIT License - see LICENSE
   -
   -->
-
 <script>
-  import "../main.css";
+	import '../main.css';
 </script>
 
 <div class="bg-white pt-5 px-0">
-  <slot />
+	<slot />
 </div>

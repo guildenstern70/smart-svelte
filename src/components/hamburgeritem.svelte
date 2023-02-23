@@ -9,6 +9,7 @@
 <script lang="ts">
 	import { currentPage } from '../stores';
 	import { goto } from '$app/navigation';
+	import { appPages } from "../pages";
 
 	type OnClickFunction = () => void;
 
@@ -21,7 +22,8 @@
 
 	currentPage.subscribe(async (value) => {
 		storedCurrentPage = value;
-		isSelected = isItemSelected(name);
+		const selectedItemName = Array.from(appPages.keys())[storedCurrentPage];
+		isSelected = (name === selectedItemName)
 	});
 
 	$: className = isSelected ? 'selectedHamburgerNav' : 'hamburgerNav';
@@ -31,31 +33,6 @@
 		onClick();
 	}
 
-	function isItemSelected(menuName: string): boolean {
-		switch (storedCurrentPage) {
-			case 0: // home
-				if (menuName === 'Home') {
-					return true;
-				}
-				break;
-			case 1: // about
-				if (menuName === 'About') {
-					return true;
-				}
-				break;
-			case 2: // colors
-				if (menuName === 'Services') {
-					return true;
-				}
-				break;
-			case 3: // pricing
-				if (menuName === 'Pricing') {
-					return true;
-				}
-				break;
-		}
-		return false;
-	}
 </script>
 
 <li>

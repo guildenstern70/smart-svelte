@@ -17,7 +17,7 @@ type UserAndPassword = {
 export class LoginService {
 	acceptedUsernames: UserAndPassword[] = [
 		{ username: 'alessio', password: 'doctor' },
-		{ username: 'guest', password: 'guest ' }
+		{ username: 'guest', password: 'guest' }
 	];
 
 	performLogin(username: string, password: string): boolean {

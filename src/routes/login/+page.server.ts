@@ -9,6 +9,7 @@
 
 import type { Actions, RequestEvent } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
+import { LoginService } from "../../services/loginservice";
 
 export const actions: Actions = {
 	default: async (event: RequestEvent) => {
@@ -18,25 +19,19 @@ export const actions: Actions = {
 		const data = await request.formData();
 		const username = data.get('username');
 		const password = data.get('password');
+
+		if (username == null || password == null) {
+			console.error('Username or password are null');
+			return;
+		}
+
 		console.log('Received login request for ' + username + ', ' + password);
 
-		if (username === 'guest' && password === 'guest') {
-			cookies.set('username', 'guest', {
-				// send cookie for every page
-				path: '/',
-				// server side only cookie so you can't use `document.cookie`
-				httpOnly: true,
-				// only requests from same site can send cookies
-				// https://developer.mozilla.org/en-US/docs/Glossary/CSRF
-				sameSite: 'strict',
-				// only sent over HTTPS in production
-				secure: process.env.NODE_ENV === 'production',
-				// set cookie to expire after a day
-				maxAge: 60 * 60 * 24
-			});
+		const loginService = new LoginService();
+		if (loginService.performLogin(username.toString(), password.toString())) {
 			throw redirect(303, '/more');
 		}
 
-		return { success: true };
+		return { success: false };
 	}
 };

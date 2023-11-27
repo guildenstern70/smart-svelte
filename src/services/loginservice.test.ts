@@ -16,7 +16,7 @@ import { session } from '../stores';
 describe('login colors', () => {
 	const loginService = new LoginService();
 	let currentSession: SmartSession;
-	const _ = session.subscribe((currSession) => (currentSession = currSession));
+	session.subscribe((currSession) => (currentSession = currSession));
 
 	it('existing user should be able to log in', () => {
 		const isLoggedIn = loginService.performLogin('alessio', 'doctor');

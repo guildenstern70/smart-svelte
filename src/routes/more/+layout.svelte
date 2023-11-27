@@ -21,6 +21,7 @@
 		console.log('Layout data ' + JSON.stringify(data));
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	let storedCurrentPage: number;
 	let hamburgerStyle = 'hidden';
 

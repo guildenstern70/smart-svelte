@@ -9,7 +9,7 @@
 <script lang="ts">
 	import { currentPage } from '../stores';
 	import { goto } from '$app/navigation';
-	import { appPages } from "../pages";
+	import { appPages } from '../pages';
 
 	type OnClickFunction = () => void;
 
@@ -23,7 +23,7 @@
 	currentPage.subscribe(async (value) => {
 		storedCurrentPage = value;
 		const selectedItemName = Array.from(appPages.keys())[storedCurrentPage];
-		isSelected = (name === selectedItemName)
+		isSelected = name === selectedItemName;
 	});
 
 	$: className = isSelected ? 'selectedHamburgerNav' : 'hamburgerNav';
@@ -32,7 +32,6 @@
 		goto(route);
 		onClick();
 	}
-
 </script>
 
 <li>

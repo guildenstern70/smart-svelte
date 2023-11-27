@@ -9,12 +9,11 @@
 
 import type { Actions, RequestEvent } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
-import { LoginService } from "../../services/loginservice";
+import { LoginService } from '../../services/loginservice';
 
 export const actions: Actions = {
 	default: async (event: RequestEvent) => {
 		const request = event.request;
-		const cookies = event.cookies;
 
 		const data = await request.formData();
 		const username = data.get('username');

@@ -1,3 +1,4 @@
+
 /*
  *
  *  SmartSvelte
@@ -11,11 +12,11 @@ import type { LayoutServerLoad } from './$types';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export const load: LayoutServerLoad = async (event: RequestEvent) => {
-	const cookies = event.cookies;
-	const loggedUser: string | undefined = cookies.get('username');
-	if (loggedUser) {
-		console.log('Found username in cookies = ' + loggedUser);
-		return { loggedUser };
-	}
-	return {};
+  const cookies = event.cookies;
+  const loggedUser: string | undefined = cookies.get('username');
+  if (loggedUser) {
+    console.log('Found username in cookies = ' + loggedUser);
+    return { loggedUser };
+  }
+  return {};
 };

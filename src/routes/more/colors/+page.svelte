@@ -16,12 +16,15 @@
 	currentPage.update(() => 2);
 </script>
 
-<div class="grid place-items-center py-5">
-	{#await data}
-		<p>...loading data...</p>
-	{:then colors}
-		<table class="w-1/2 text-sm text-left text-gray-500 dark:text-gray-400">
-			<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<div class="sm:mx-18 md:mx-10 lg:mx-20">
+	<h2 class="text-indigo-600 font-bold text-xl mb-6">COLORS</h2>
+
+	<div class="grid place-items-center py-5">
+		{#await data}
+			<p>...loading data...</p>
+		{:then colors}
+			<table class="w-1/2 text-sm text-left text-gray-500 dark:text-gray-400">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 				<tr>
 					<th scope="col" class="px-6 py-3"> ID </th>
 					<th scope="col" class="px-6 py-3"> Name </th>
@@ -29,8 +32,8 @@
 					<th scope="col" class="px-6 py-3"> Color </th>
 					<th scope="col" class="px-6 py-3"> Pantone </th>
 				</tr>
-			</thead>
-			<tbody>
+				</thead>
+				<tbody>
 				{#each colors.colors as color}
 					<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 						<th
@@ -53,9 +56,13 @@
 						</td>
 					</tr>
 				{/each}
-			</tbody>
-		</table>
-	{:catch error}
-		<p style="color: red">{error.message}</p>
-	{/await}
+				</tbody>
+			</table>
+		{:catch error}
+			<p style="color: red">{error.message}</p>
+		{/await}
+	</div>
+
 </div>
+
+

@@ -24,10 +24,10 @@ export const actions: Actions = {
 			return;
 		}
 
-		console.log('Received login request for ' + username + ', ' + password);
+		console.log('Received login request for ' + username + '/*************');
 
 		const loginService = new LoginService();
-		if (loginService.performLogin(username.toString(), password.toString())) {
+		if (loginService.performLogin(event.cookies, username.toString(), password.toString())) {
 			throw redirect(303, '/more');
 		}
 

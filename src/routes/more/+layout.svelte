@@ -7,27 +7,20 @@
   -
   -->
 <script lang="ts">
-	import type { LayoutData } from './$types';
 	import UserAvatar from '../../components/useravatar.svelte';
 
-	export let data: LayoutData;
-
-	import { currentPage } from '../../stores';
 	import { appPages } from '../../pages';
 	import CssItem from '../../components/cssitem.svelte';
 	import HamburgerItem from '../../components/hamburgeritem.svelte';
+	import type { LayoutData } from './$types';
+
+	export let data: LayoutData;
 
 	if (data) {
 		console.log('Layout data ' + JSON.stringify(data));
 	}
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	let storedCurrentPage: number;
 	let hamburgerStyle = 'hidden';
-
-	currentPage.subscribe(async (value) => {
-		storedCurrentPage = value;
-	});
 
 	function onHamburger(): void {
 		hamburgerStyle = hamburgerStyle === 'hidden' ? '' : 'hidden';
@@ -49,16 +42,7 @@
 			>
 		</a>
 		<div class="flex md:order-2">
-			{#if data.loggedUser}
-				<UserAvatar username={data.loggedUser} />
-			{:else}
-				<!-- Login Button -->
-				<a
-					href="/login"
-					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-					>Login</a
-				>
-			{/if}
+				<UserAvatar username="{data.loggedUser}" />
 			<button
 				on:click={onHamburger}
 				data-collapse-toggle="navbar-hamburger"

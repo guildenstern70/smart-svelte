@@ -7,6 +7,30 @@
   -
   -->
 
+<script lang="ts">
+
+	function loginAsGuest() {
+		const username = 'guest';
+		const password = 'guest';
+		const form = document.createElement('form');
+		form.method = 'POST';
+		form.action = '/login';
+		const usernameField = document.createElement('input');
+		usernameField.type = 'hidden';
+		usernameField.name = 'username';
+		usernameField.value = username;
+		const passwordField = document.createElement('input');
+		passwordField.type = 'hidden';
+		passwordField.name = 'password';
+		passwordField.value = password;
+		form.appendChild(usernameField);
+		form.appendChild(passwordField);
+		document.body.appendChild(form);
+		form.submit();
+	}
+
+</script>
+
 <section>
 	<div class="flex flex-col items-center justify-center px-6 py-6 mx-auto lg:mt-8">
 		<a
@@ -43,7 +67,7 @@
 							id="username"
 							class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							placeholder="Your username"
-							required=""
+							required
 						/>
 					</div>
 					<div>
@@ -57,7 +81,7 @@
 							id="password"
 							placeholder="••••••••"
 							class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							required=""
+							required
 						/>
 					</div>
 					<div class="flex items-center justify-between">
@@ -68,7 +92,6 @@
 									aria-describedby="remember"
 									type="checkbox"
 									class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-									required=""
 								/>
 							</div>
 							<div class="ml-3 text-sm">
@@ -78,8 +101,7 @@
 						<a
 							href="/more"
 							class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-							>Skip</a
-						>
+							>Skip</a>
 					</div>
 					<button
 						type="submit"
@@ -87,7 +109,9 @@
 						>Sign in</button
 					>
 					<p class="text-sm font-light text-gray-500 dark:text-gray-400">
-						Don't remember your username? Try <b>guest</b> / <b>guest</b>
+						Don't remember your username?
+						<button type="button" class="text-primary-600 hover:underline"
+										on:click={() => loginAsGuest()}>Login as guest</button>
 					</p>
 				</form>
 			</div>

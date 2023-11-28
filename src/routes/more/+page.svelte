@@ -9,6 +9,7 @@
 <script>
 	import Paragraph from '../../components/paragraph.svelte';
 	import { currentPage } from '../../stores';
+
 	currentPage.update(() => 0);
 </script>
 

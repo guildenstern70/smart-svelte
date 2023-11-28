@@ -7,7 +7,7 @@
  *
  */
 
-import { session } from '../stores';
+import type { Cookies } from "@sveltejs/kit";
 
 type UserAndPassword = {
 	username: string;
@@ -20,21 +20,30 @@ export class LoginService {
 		{ username: 'guest', password: 'guest' }
 	];
 
-	performLogin(username: string, password: string): boolean {
-		let foundUser = false;
-		this.acceptedUsernames.forEach((user) => {
+	setUsernameCookie(cookies: Cookies, username: string): void {
+		cookies.set('username', username, {
+			httpOnly: true,
+			sameSite: 'strict',
+			secure: false,
+			path: '/',
+			maxAge: 60 * 60 * 24 * 7
+		});
+	}
+
+	getUsernameCookie(cookies: Cookies): string | undefined {
+		return cookies.get('username');
+	}
+
+	performLogin(cookies: Cookies, username: string, password: string): boolean {
+		for (const user of this.acceptedUsernames) {
 			if (user.username === username && user.password === password) {
 				console.log('Login confirmed for user ' + username);
-				session.update(() => ({ loggedUser: username }));
-				foundUser = true;
+				this.setUsernameCookie(cookies, username);
+				return true;
 			}
-		});
-
-		if (!foundUser) {
-			console.error('User unknown: ' + username);
-			session.update(() => ({ loggedUser: '' }));
-			return false;
 		}
-		return true;
+		console.log('Login failed for user ' + username);
+		this.setUsernameCookie(cookies, '');
+		return false;
 	}
 }

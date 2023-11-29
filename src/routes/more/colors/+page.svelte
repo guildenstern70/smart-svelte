@@ -6,23 +6,23 @@
   -  MIT License - see LICENSE
   -
   -->
-<script>
+<script lang="ts">
 	import { currentPage } from '../../../stores';
 	import ColorItem from '../../../components/coloritem.svelte';
+	import type { Colors } from "../../../model/color";
+	import { page } from '$app/stores';
 
 	/** @type {import('./$types').PageData} */
-	export let data;
-
+	export let data: Colors | Error;
 	currentPage.update(() => 2);
+
 </script>
 
 <div class="sm:mx-18 md:mx-10 lg:mx-20">
 	<h2 class="text-indigo-600 font-bold text-xl mb-6">COLORS</h2>
 
 	<div class="grid place-items-center py-5">
-		{#await data}
-			<p>...loading data...</p>
-		{:then colors}
+		{#if "colors" in data }
 			<table class="w-1/2 text-sm text-left text-gray-500 dark:text-gray-400">
 				<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 				<tr>
@@ -34,7 +34,7 @@
 				</tr>
 				</thead>
 				<tbody>
-				{#each colors.colors as color}
+				{#each data.colors as color}
 					<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 						<th
 							scope="row"
@@ -58,9 +58,10 @@
 				{/each}
 				</tbody>
 			</table>
-		{:catch error}
-			<p style="color: red">{error.message}</p>
-		{/await}
+		{/if}
+		{#if $page.error}
+			<p style="color: red">{$page.error.message}</p>
+		{/if}
 	</div>
 
 </div>

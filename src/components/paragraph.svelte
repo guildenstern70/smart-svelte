@@ -7,11 +7,11 @@
   -
   -->
 <script lang="ts">
-	export let title: string;
+	export let heading: string;
 </script>
 
 <div class="sm:mx-18 md:mx-10 lg:mx-20">
-	<h2 class="text-indigo-600 font-bold text-xl mb-6">{title}</h2>
+	<h2 class="text-indigo-600 font-bold text-xl mb-6">{heading}</h2>
 
 	<p class="italic">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

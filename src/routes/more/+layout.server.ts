@@ -10,6 +10,7 @@
 
 import type { LayoutServerLoad } from './$types';
 import type { RequestEvent } from '@sveltejs/kit';
+import type { SmartSession } from "../../model/session";
 
 export const load: LayoutServerLoad = async (event: RequestEvent) => {
   const cookies = event.cookies;
@@ -18,5 +19,5 @@ export const load: LayoutServerLoad = async (event: RequestEvent) => {
     console.log('Found username in cookies = ' + loggedUser);
     return { loggedUser };
   }
-  return {};
+  return { loggedUser: '' };
 };

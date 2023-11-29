@@ -13,4 +13,4 @@
 	currentPage.update(() => 3);
 </script>
 
-<Paragraph title="PRICING" />
+<Paragraph heading="PRICING" />

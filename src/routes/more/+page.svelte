@@ -13,4 +13,4 @@
 	currentPage.update(() => 0);
 </script>
 
-<Paragraph title="HOME" />
+<Paragraph heading="HOME" />

@@ -53,7 +53,21 @@ npm run test
 
 ## Docker Image
 
+First of all install dotenv
+
+    npm install dotenv
+
+Then build with
+
+    node -r dotenv/config build
+
 We are using 'Node.js Adapter' to deploy SmartSvelte app as a Node.js application.
 
     docker build -t smartsvelte-docker .
-    docker run --publish 8080:3000 smartsvelte-docker
+    docker run -p 8080:8080 smartsvelte-docker
+
+You may navigate the site with
+
+    http://0.0.0.0:8080/
+
+

@@ -39,7 +39,7 @@ npm run test:unit
 
 ## UI Tests
 
-Before running UI rests, install 'playwright' with
+Before running UI tests with 'npm run test', you must install 'playwright' with
 
 ```bash
 npx playwright install

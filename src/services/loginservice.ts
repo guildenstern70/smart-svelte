@@ -30,10 +30,6 @@ export class LoginService {
 		});
 	}
 
-	getUsernameCookie(cookies: Cookies): string | undefined {
-		return cookies.get('username');
-	}
-
 	performLogin(cookies: Cookies, username: string, password: string): boolean {
 		for (const user of this.acceptedUsernames) {
 			if (user.username === username && user.password === password) {
@@ -46,4 +42,5 @@ export class LoginService {
 		this.setUsernameCookie(cookies, '');
 		return false;
 	}
+
 }

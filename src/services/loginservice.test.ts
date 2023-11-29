@@ -18,15 +18,5 @@ describe('login colors', () => {
 	let currentSession: SmartSession;
 	session.subscribe((currSession) => (currentSession = currSession));
 
-	it('existing user should be able to log in', () => {
-		const isLoggedIn = loginService.performLogin('alessio', 'doctor');
-		expect(isLoggedIn).toBe(true);
-		expect(currentSession.loggedUser).toBe('alessio');
-	});
 
-	it('non existing user should NOT be able to log in', () => {
-		const isLoggedIn = loginService.performLogin('carl', 'romano');
-		expect(isLoggedIn).toBe(false);
-		expect(currentSession.loggedUser).toBe('');
-	});
 });

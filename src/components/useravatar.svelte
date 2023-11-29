@@ -24,6 +24,7 @@
 	{#if username && username.length > 0}
 		<Avatar
 			id="user-drop"
+			alt="User avatar"
 			src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
 			dot={{ color: 'green' }}
 		/>

@@ -17,18 +17,20 @@ test('index page has expected h1', async ({ page }) => {
 
 test('existing user should be able to log in', async ({ page }) => {
 
+	// Go to login page
 	await page.goto('/login');
 	await expect(
 		page
 			.getByRole('heading', { name: 'Sign in to your account'})
 	).toBeVisible();
 
+	// Filling login form with guest user
 	await page.getByLabel('Username').fill('guest');
 	await page.getByLabel('Password').fill('guest');
 	const submitButton = page.getByRole('button', { name: 'Sign in' });
 	await submitButton.click();
 
-	// You should land to Home Page
+	// Guest should land to Home Page
 	await expect(
 		page
 			.getByRole('heading', { name: 'Home'})

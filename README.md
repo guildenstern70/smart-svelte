@@ -69,5 +69,3 @@ We are using 'Node.js Adapter' to deploy SmartSvelte app as a Node.js applicatio
 You may navigate the site with
 
     http://0.0.0.0:8080/
-
-

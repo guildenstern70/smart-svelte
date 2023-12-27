@@ -8,6 +8,5 @@
  */
 
 export interface SmartSession {
-  loggedUser: string;
+	loggedUser: string;
 }
-

@@ -1,4 +1,3 @@
-
 /*
  *
  *  SmartSvelte
@@ -8,16 +7,20 @@
  *
  */
 
-import type { LayoutServerLoad } from './$types';
 import type { RequestEvent } from '@sveltejs/kit';
-import type { SmartSession } from "../../model/session";
+import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async (event: RequestEvent) => {
-  const cookies = event.cookies;
-  const loggedUser: string | undefined = cookies.get('username');
-  if (loggedUser) {
-    console.log('Found username in cookies = ' + loggedUser);
-    return { loggedUser };
-  }
-  return { loggedUser: '' };
+	// Cookies are only available in server-side code
+	const cookies = event.cookies;
+
+	if (cookies) {
+		const loggedUser: string | undefined = cookies.get('username');
+		if (loggedUser) {
+			console.log('Found username in cookies = ' + loggedUser);
+			return { loggedUser };
+		}
+	}
+
+	return {};
 };

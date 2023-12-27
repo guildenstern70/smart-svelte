@@ -7,7 +7,6 @@
   -
   -->
 <script lang="ts">
-
 	import { appPages } from '../../pages';
 	import CssItem from '../../components/cssitem.svelte';
 	import HamburgerItem from '../../components/hamburgeritem.svelte';
@@ -42,7 +41,7 @@
 			>
 		</a>
 		<div class="flex md:order-2">
-				<UserAvatar username="{data.loggedUser}" />
+			<UserAvatar username={data.loggedUser} />
 			<button
 				on:click={onHamburger}
 				data-collapse-toggle="navbar-hamburger"

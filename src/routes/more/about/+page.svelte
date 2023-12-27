@@ -6,11 +6,15 @@
   -  MIT License - see LICENSE
   -
   -->
-<script>
+<script lang="ts">
+	import type { PageData } from '../$types';
 	import Paragraph from '../../../components/paragraph.svelte';
 	import { currentPage } from '../../../stores';
 
 	currentPage.update(() => 1);
+
+	export let data: PageData;
+	const username = data.loggedUser;
 </script>
 
-<Paragraph heading="ABOUT" />
+<Paragraph {username} heading="ABOUT" />

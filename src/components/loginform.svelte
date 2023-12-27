@@ -8,7 +8,6 @@
   -->
 
 <script lang="ts">
-
 	function loginAsGuest() {
 		const username = 'guest';
 		const password = 'guest';
@@ -28,7 +27,6 @@
 		document.body.appendChild(form);
 		form.submit();
 	}
-
 </script>
 
 <section>
@@ -101,7 +99,8 @@
 						<a
 							href="/more"
 							class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-							>Skip</a>
+							>Skip</a
+						>
 					</div>
 					<button
 						type="submit"
@@ -110,8 +109,11 @@
 					>
 					<p class="text-sm font-light text-gray-500 dark:text-gray-400">
 						Don't remember your username?
-						<button type="button" class="text-primary-600 hover:underline"
-										on:click={() => loginAsGuest()}>Login as guest</button>
+						<button
+							type="button"
+							class="text-primary-600 hover:underline"
+							on:click={() => loginAsGuest()}>Login as guest</button
+						>
 					</p>
 				</form>
 			</div>

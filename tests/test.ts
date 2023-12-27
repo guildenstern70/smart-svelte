@@ -16,13 +16,9 @@ test('index page has expected h1', async ({ page }) => {
 });
 
 test('existing user should be able to log in', async ({ page }) => {
-
 	// Go to login page
 	await page.goto('/login');
-	await expect(
-		page
-			.getByRole('heading', { name: 'Sign in to your account'})
-	).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'Sign in to your account' })).toBeVisible();
 
 	// Filling login form with guest user
 	await page.getByLabel('Username').fill('guest');
@@ -31,29 +27,20 @@ test('existing user should be able to log in', async ({ page }) => {
 	await submitButton.click();
 
 	// Guest should land to Home Page
-	await expect(
-		page
-			.getByRole('heading', { name: 'Home'})
-	).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'Home' })).toBeVisible();
 
 	// Avatar menu should be visible
 	await expect(page.getByAltText('User avatar')).toBeVisible();
 });
 
-test('non existing user should NOT be able to log in', async ({page}) => {
+test('non existing user should NOT be able to log in', async ({ page }) => {
 	await page.goto('/login');
-	await expect(
-		page
-			.getByRole('heading', { name: 'Sign in to your account'})
-	).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'Sign in to your account' })).toBeVisible();
 
 	await page.getByLabel('Username').fill('carl');
 	await page.getByLabel('Password').fill('roman');
 	await page.click('text=Sign in');
 
 	// Nothing happens
-	await expect(
-		page
-			.getByRole('heading', { name: 'Sign in to your account'})
-	).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'Sign in to your account' })).toBeVisible();
 });

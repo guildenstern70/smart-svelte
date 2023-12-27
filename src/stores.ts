@@ -19,7 +19,5 @@ import { writable } from 'svelte/store';
  * This is why we DO NOT use stores for session data.
  */
 
-
 // Current page store
 export const currentPage: Writable<number> = writable(0);
-

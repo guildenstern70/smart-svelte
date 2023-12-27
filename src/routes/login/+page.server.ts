@@ -26,8 +26,8 @@ export const actions: Actions = {
 
 		console.log('Received login request for ' + username + '/*************');
 
-		const loginService = new LoginService();
-		if (loginService.performLogin(event.cookies, username.toString(), password.toString())) {
+		const loginService = new LoginService(event.cookies);
+		if (loginService.performLogin(username.toString(), password.toString())) {
 			throw redirect(303, '/more');
 		}
 

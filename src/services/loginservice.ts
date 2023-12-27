@@ -7,7 +7,8 @@
  *
  */
 
-import type { Cookies } from "@sveltejs/kit";
+import type { Cookies } from '@sveltejs/kit';
+import { CookieService } from './cookieservice';
 
 type UserAndPassword = {
 	username: string;
@@ -15,32 +16,27 @@ type UserAndPassword = {
 };
 
 export class LoginService {
+	private readonly cookieService: CookieService;
+
+	constructor(cookies?: Cookies) {
+		this.cookieService = new CookieService(cookies);
+	}
+
 	acceptedUsernames: UserAndPassword[] = [
 		{ username: 'alessio', password: 'doctor' },
 		{ username: 'guest', password: 'guest' }
 	];
 
-	setUsernameCookie(cookies: Cookies, username: string): void {
-		cookies.set('username', username, {
-			httpOnly: true,
-			sameSite: 'strict',
-			secure: false,
-			path: '/',
-			maxAge: 60 * 60 * 24 * 7
-		});
-	}
-
-	performLogin(cookies: Cookies, username: string, password: string): boolean {
+	performLogin(username: string, password: string): boolean {
 		for (const user of this.acceptedUsernames) {
 			if (user.username === username && user.password === password) {
 				console.log('Login confirmed for user ' + username);
-				this.setUsernameCookie(cookies, username);
+				this.cookieService.setUsernameCookie(username);
 				return true;
 			}
 		}
 		console.log('Login failed for user ' + username);
-		this.setUsernameCookie(cookies, '');
+		this.cookieService.deleteCookie('username');
 		return false;
 	}
-
 }

@@ -48,7 +48,7 @@ npx playwright install
 then run
 
 ```bash
-npm run test
+npm run test:integration
 ```
 
 ## Docker Image

@@ -8,9 +8,9 @@
   -->
 <script lang="ts">
 	import { appPages } from '../../pages';
-	import CssItem from '../../components/cssitem.svelte';
-	import HamburgerItem from '../../components/hamburgeritem.svelte';
-	import UserAvatar from '../../components/useravatar.svelte';
+	import CssItem from '../../lib/components/cssitem.svelte';
+	import HamburgerItem from '../../lib/components/hamburgeritem.svelte';
+	import UserAvatar from '../../lib/components/useravatar.svelte';
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;

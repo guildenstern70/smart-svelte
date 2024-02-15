@@ -7,7 +7,7 @@
  *
  */
 
-import type { Color, Colors } from '../../../model/color';
+import type { Color, Colors } from '../../../lib/model/color';
 
 export async function load(): Promise<Colors | Error> {
 	const REST_API_URL = 'https://reqres.in/api/unknown';

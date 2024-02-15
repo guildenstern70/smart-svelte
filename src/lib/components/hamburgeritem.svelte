@@ -7,9 +7,9 @@
   -
   -->
 <script lang="ts">
-	import { currentPage } from '../stores';
+	import { currentPage } from '../../stores';
 	import { goto } from '$app/navigation';
-	import { appPages } from '../pages';
+	import { appPages } from '../../pages';
 
 	type OnClickFunction = () => void;
 

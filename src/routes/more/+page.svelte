@@ -8,7 +8,7 @@
   -->
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Paragraph from '../../components/paragraph.svelte';
+	import Paragraph from '../../lib/components/paragraph.svelte';
 	import { currentPage } from '../../stores';
 
 	currentPage.update(() => 0);

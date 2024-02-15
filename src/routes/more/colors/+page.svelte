@@ -8,8 +8,8 @@
   -->
 <script lang="ts">
 	import { currentPage } from '../../../stores';
-	import ColorItem from '../../../components/coloritem.svelte';
-	import type { Colors } from '../../../model/color';
+	import ColorItem from '$lib/components/coloritem.svelte';
+	import type { Colors } from '$lib/model/color';
 	import { page } from '$app/stores';
 
 	export let data: Colors | Error;

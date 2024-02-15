@@ -7,7 +7,7 @@
   -
   -->
 <script lang="ts">
-	import { currentPage } from '../stores';
+	import { currentPage } from '../../stores';
 
 	export let url: string;
 	export let name = 'Home';

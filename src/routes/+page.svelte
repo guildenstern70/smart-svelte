@@ -29,8 +29,7 @@
 			<a
 				href="/more"
 				class="rounded-lg px-4 py-2 mx-1 bg-indigo-600 text-blue-100 hover:bg-blue-600 duration-300"
-				>Learn more...</a
-			>
+				>Learn more...</a>
 			<a
 				href="/login"
 				class="rounded-lg px-4 py-2 mx-1 bg-gray-600 text-gray-100 hover:bg-gray-700 duration-300"

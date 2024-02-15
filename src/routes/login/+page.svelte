@@ -7,7 +7,7 @@
   -
   -->
 <script>
-	import LoginForm from '../../components/loginform.svelte';
+	import LoginForm from '$lib/components/loginform.svelte';
 </script>
 
 <LoginForm />

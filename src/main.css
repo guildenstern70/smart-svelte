@@ -7,11 +7,10 @@
  *
  */
 
+@import "tailwindcss";
 @import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@plugin 'flowbite/plugin';
 
 .svelte-orange {
 	color: #ff3e00;

@@ -1,16 +1,20 @@
 <!--
-  -
-  -  SmartSvelte
-  -  A web template project for Svelte
-  -  Copyright (c) 2023 Alessio Saltarin
-  -  MIT License - see LICENSE
-  -
-  -->
-<script lang="ts">
-	export let username: string | undefined;
-	export let heading: string;
+-
+-  SmartSvelte
+-  A web template project for Svelte
+-  Copyright (c) 2023-25 Alessio Saltarin
+-  MIT License - see LICENSE
+-
+-->
 
-	console.log('Paragrah with username = ' + username);
+<script lang="ts">
+	interface ParagraphProps {
+		username: string | undefined;
+		heading: string;
+	}
+
+	let { username, heading }: ParagraphProps = $props();
+
 </script>
 
 <div class="sm:mx-18 md:mx-10 lg:mx-20">

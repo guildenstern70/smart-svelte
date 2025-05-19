@@ -1,32 +1,26 @@
 <!--
-  -
-  -  SmartSvelte
-  -  A web template project for Svelte
-  -  Copyright (c) 2023 Alessio Saltarin
-  -  MIT License - see LICENSE
-  -
-  -->
+-
+-  SmartSvelte
+-  A web template project for Svelte
+-  Copyright (c) 2023-25 Alessio Saltarin
+-  MIT License - see LICENSE
+-
+-->
+
 <script lang="ts">
-	import { currentPage } from '../../stores';
 	import { goto } from '$app/navigation';
-	import { appPages } from '../../pages';
 
 	type OnClickFunction = () => void;
 
-	export let url: string;
-	export let name = 'Home';
-	export let onClick: OnClickFunction;
+	interface HamburgerItemProps {
+		url: string | undefined;
+		name: string;
+		onClick: OnClickFunction;
+	}
 
-	let storedCurrentPage: number;
-	let isSelected = false;
+	let { url, name, onClick }: HamburgerItemProps = $props();
 
-	currentPage.subscribe(async (value) => {
-		storedCurrentPage = value;
-		const selectedItemName = Array.from(appPages.keys())[storedCurrentPage];
-		isSelected = name === selectedItemName;
-	});
-
-	$: className = isSelected ? 'selectedHamburgerNav' : 'hamburgerNav';
+	let className = 'selectedHamburgerNav';  // if selected, else 'hamburgerNav'
 
 	function routeToPage(route: string): void {
 		goto(route);
@@ -35,5 +29,5 @@
 </script>
 
 <li>
-	<button on:click={() => routeToPage(url)} class={className}>{name}</button>
+	<button onclick={() => routeToPage(url)} class={className}>{name}</button>
 </li>

@@ -1,25 +1,22 @@
 <!--
-  -
-  -  SmartSvelte
-  -  A web template project for Svelte
-  -  Copyright (c) 2023 Alessio Saltarin
-  -  MIT License - see LICENSE
-  -
-  -->
+-
+-  SmartSvelte
+-  A web template project for Svelte
+-  Copyright (c) 2023-25 Alessio Saltarin
+-  MIT License - see LICENSE
+-
+-->
+
 <script lang="ts">
-	import { appPages } from '../../pages';
-	import CssItem from '../../lib/components/cssitem.svelte';
-	import HamburgerItem from '../../lib/components/hamburgeritem.svelte';
-	import UserAvatar from '../../lib/components/useravatar.svelte';
+	import CssItem from '$lib/components/cssitem.svelte';
+	import HamburgerItem from '$lib/components/hamburgeritem.svelte';
+	import UserAvatar from '$lib/components/useravatar.svelte';
 	import type { LayoutData } from './$types';
+	import type { Snippet } from 'svelte';
+	import { appPages } from '$lib/model/apppages';
 
-	export let data: LayoutData;
-
-	if (data) {
-		console.log('Layout data ' + JSON.stringify(data));
-	}
-
-	let hamburgerStyle = 'hidden';
+	const { data, children }: { data: LayoutData; children: Snippet } = $props();
+	let hamburgerStyle = $state('hidden');
 
 	function onHamburger(): void {
 		hamburgerStyle = hamburgerStyle === 'hidden' ? '' : 'hidden';
@@ -43,7 +40,7 @@
 		<div class="flex md:order-2">
 			<UserAvatar username={data.loggedUser} />
 			<button
-				on:click={onHamburger}
+				onclick={onHamburger}
 				data-collapse-toggle="navbar-hamburger"
 				type="button"
 				class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -67,8 +64,8 @@
 		</div>
 		<div class="{hamburgerStyle} w-full" id="navbar-hamburger">
 			<ul class="flex flex-col mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-				{#each [...appPages] as [name, url]}
-					<HamburgerItem {url} {name} onClick={onHamburger} />
+				{#each appPages.keys() as name (name)}
+					<HamburgerItem url={appPages.get(name)} {name} onClick={onHamburger} />
 				{/each}
 			</ul>
 		</div>
@@ -79,8 +76,8 @@
 			<ul
 				class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
 			>
-				{#each [...appPages] as [name, url]}
-					<CssItem {url} {name} />
+				{#each appPages.keys() as name (name)}
+					<CssItem url={appPages.get(name)} {name} />
 				{/each}
 			</ul>
 		</div>
@@ -88,5 +85,5 @@
 </nav>
 
 <div class="mx-6 mt-20">
-	<slot />
+	{@render children()}
 </div>

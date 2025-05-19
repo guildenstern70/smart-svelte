@@ -1,21 +1,22 @@
 <!--
-  -
-  -  SmartSvelte
-  -  A web template project for Svelte
-  -  Copyright (c) 2023 Alessio Saltarin
-  -  MIT License - see LICENSE
-  -
-  -->
+-
+-  SmartSvelte
+-  A web template project for Svelte
+-  Copyright (c) 2023-25 Alessio Saltarin
+-  MIT License - see LICENSE
+-
+-->
+
 <script lang="ts">
 	import { Avatar, Dropdown, DropdownHeader, DropdownItem } from 'flowbite-svelte';
-	export let username: string | undefined;
-	let capitalizedUsername: string = '?';
+
+	let { username }: { username: string | undefined } = $props();
+	let capitalizedUsername: string = $state('?');
 
 	if (username != undefined) {
 		capitalizedUsername = username.charAt(0).toUpperCase() + username.slice(1);
 	}
 
-	console.log('User: ' + capitalizedUsername);
 </script>
 
 <div>

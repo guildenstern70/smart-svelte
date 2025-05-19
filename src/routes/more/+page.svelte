@@ -1,23 +1,22 @@
 <!--
-  -
-  -  SmartSvelte
-  -  A web template project for Svelte
-  -  Copyright (c) 2023 Alessio Saltarin
-  -  MIT License - see LICENSE
-  -
-  -->
+-
+-  SmartSvelte
+-  A web template project for Svelte
+-  Copyright (c) 2023-25 Alessio Saltarin
+-  MIT License - see LICENSE
+-
+-->
+
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Paragraph from '../../lib/components/paragraph.svelte';
-	import { currentPage } from '../../stores';
+	import Paragraph from '$lib/components/paragraph.svelte';
 
-	currentPage.update(() => 0);
+	const { data }: { data: PageData } = $props();
 
-	export let data: PageData;
-
-	// we can access `data.loggedUser` because it's returned from
-	// the parent layout `load` function
-	const username = data.loggedUser;
+	let username: string | undefined = $state(undefined);
+	if (data.loggedUser) {
+		username = data.loggedUser;
+	}
 </script>
 
 <Paragraph {username} heading="HOME" />

@@ -2,14 +2,14 @@
  *
  *  SmartSvelte
  *  A web template project for Svelte
- *  Copyright (c) 2023 Alessio Saltarin
+ *  Copyright (c) 2023-25 Alessio Saltarin
  *  MIT License - see LICENSE
  *
  */
 
 import type { Actions, RequestEvent } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
-import { LoginService } from '../../lib/services/loginservice';
+import { LoginService } from '$lib/services/loginservice';
 
 export const actions: Actions = {
 	default: async (event: RequestEvent) => {

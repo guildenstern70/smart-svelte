@@ -1,11 +1,11 @@
 <!--
-  -
-  -  SmartSvelte
-  -  A web template project for Svelte
-  -  Copyright (c) 2023 Alessio Saltarin
-  -  MIT License - see LICENSE
-  -
-  -->
+-
+-  SmartSvelte
+-  A web template project for Svelte
+-  Copyright (c) 2023-25 Alessio Saltarin
+-  MIT License - see LICENSE
+-
+-->
 
 <div class="mx-auto max-w-7xl py-20 lg:py-20 sm:py-24">
 	<div class="mx-auto max-w-2xl lg:text-center">
@@ -38,3 +38,4 @@
 		</div>
 	</div>
 </div>
+

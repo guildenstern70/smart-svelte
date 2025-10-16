@@ -7,16 +7,17 @@
 -
 -->
 
+
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { goto, invalidateAll } from '$app/navigation';
 	import type { PageData } from './$types';
-	import Paragraph from '$lib/components/paragraph.svelte';
 
 	const { data }: { data: PageData } = $props();
 
-	let username: string | undefined = $state(undefined);
-	if (data.loggedUser && data.loggedUser.username) {
-		username = data.loggedUser.username;
-	}
+	onMount(async () => {
+		data.loggedUser = undefined;
+		await invalidateAll();
+		await goto(`/`, { replaceState: true });
+	});
 </script>
-
-<Paragraph {username} heading="HOME" />

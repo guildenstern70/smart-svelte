@@ -38,7 +38,7 @@
 			>
 		</a>
 		<div class="flex md:order-2">
-			<UserAvatar username={data.loggedUser} />
+			<UserAvatar username={data.loggedUser?.username} />
 			<button
 				onclick={onHamburger}
 				data-collapse-toggle="navbar-hamburger"
@@ -84,6 +84,6 @@
 	</div>
 </nav>
 
-<div class="mx-6 mt-20">
+<div class="mx-6 mt-25">
 	{@render children()}
 </div>

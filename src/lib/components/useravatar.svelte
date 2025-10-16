@@ -24,7 +24,8 @@
 		<Avatar
 			id="user-drop"
 			alt="User avatar"
-			src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+			src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
+			class="cursor-pointer"
 			dot={{ color: 'green' }}
 		/>
 		<Dropdown triggeredBy="#user-drop">

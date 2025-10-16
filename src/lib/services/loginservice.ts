@@ -8,6 +8,7 @@
  */
 import type { Cookies } from '@sveltejs/kit';
 import { CookieService } from './cookieservice';
+import { UserDb } from '$lib/services/userdb';
 
 type UserAndPassword = {
 	username: string;
@@ -30,12 +31,16 @@ export class LoginService {
 		for (const user of this.acceptedUsernames) {
 			if (user.username === username && user.password === password) {
 				console.log('Login confirmed for user ' + username);
-				this.cookieService.setUsernameCookie(username);
-				return true;
+				const user = new UserDb().getUser(username);
+				if (user) {
+					this.cookieService.setSessionCookie(user);
+					return true;
+				}
+				console.warn('User not found in database');
 			}
 		}
 		console.log('Login failed for user ' + username);
-		this.cookieService.deleteCookie('username');
+		this.cookieService.deleteSessionCookie();
 		return false;
 	}
 }

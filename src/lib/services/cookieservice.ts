@@ -8,6 +8,9 @@
  */
 
 import type { Cookies } from '@sveltejs/kit';
+import type { SmartSession } from '$lib/model/session';
+
+const SESSION_COOKIE_KEY = 'session';
 
 export class CookieService {
 	private readonly cookies?: Cookies;
@@ -16,25 +19,24 @@ export class CookieService {
 		this.cookies = cookies;
 	}
 
-	setUsernameCookie(username: string): void {
-		this.setCookie('username', username);
+	setSessionCookie(user: SmartSession): void {
+		const jsonSession = JSON.stringify(user);
+		this.setCookie(SESSION_COOKIE_KEY, jsonSession);
 	}
 
-	getUsernameCookie(): string | undefined {
+	getSessionCookie(): SmartSession | undefined {
 		if (this.cookies) {
-			return this.cookies.get('username');
+			const jsonSession = this.cookies.get(SESSION_COOKIE_KEY);
+			if (jsonSession)
+				return JSON.parse(jsonSession);
+			else return undefined;
 		}
+		return undefined;
 	}
 
-	getCookie(cookieKey: string): string | undefined {
+	deleteSessionCookie() {
 		if (this.cookies) {
-			return this.cookies.get(cookieKey);
-		}
-	}
-
-	deleteCookie(cookieKey: string) {
-		if (this.cookies) {
-			this.cookies.delete(cookieKey, { path: '/'});
+			this.cookies.delete(SESSION_COOKIE_KEY, { path: '/'});
 		}
 	}
 

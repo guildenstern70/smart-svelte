@@ -7,17 +7,12 @@
  *
  */
 
-import { redirect } from '@sveltejs/kit';
-import type { RequestEvent, PageServerLoad } from './$types';
+import type { RequestEvent } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 import { CookieService } from '$lib/services/cookieservice';
 
 export const load: PageServerLoad = async (event: RequestEvent) => {
-	console.log('Deleting cookie...');
-
-	// eat the cookie
+	console.log('Logging user out from PageServerLoad');
 	const cookieService = new CookieService(event.cookies);
-	cookieService.deleteCookie('username');
-
-	// redirect the user
-	throw redirect(302, '/login');
+	cookieService.deleteSessionCookie();
 };

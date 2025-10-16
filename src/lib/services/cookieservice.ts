@@ -34,7 +34,7 @@ export class CookieService {
 
 	deleteCookie(cookieKey: string) {
 		if (this.cookies) {
-			this.cookies.delete(cookieKey);
+			this.cookies.delete(cookieKey, { path: '/'});
 		}
 	}
 
